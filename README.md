@@ -5,6 +5,9 @@
 ## Table of contents
 - Getting Started
   - [Installation](https://github.com/yieldapp/crypto_address_detector/edit/master/README.md#installation)
+  - [Usage](https://github.com/yieldapp/crypto_address_detector/blob/master/README.md#usage)
+    - [Example](https://github.com/yieldapp/crypto_address_detector/blob/master/README.md#example)
+   
 ## Getting Started
 ### Installation
 This module uses node.js, and can be installed through npm or yarn:
