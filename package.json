@@ -1,0 +1,25 @@
+{
+  "name": "crypto_address_detector",
+  "version": "1.0.0",
+  "description": "Detect and determine cryptocurrency by address.",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/yieldapp/crypto_address_detector.git"
+  },
+  "keywords": [
+    "crpto",
+    "address",
+    "detector"
+  ],
+  "author": "yieldapp",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/yieldapp/crypto_address_detector/issues"
+  },
+  "homepage": "https://github.com/yieldapp/crypto_address_detector#readme"
+}
