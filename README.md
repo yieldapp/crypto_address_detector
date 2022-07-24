@@ -14,12 +14,12 @@ This module uses node.js, and can be installed through npm or yarn:
 
 NPM:
 ```
-npm install --save crypto_address_detector
+npm install --save @yieldapp/crypto-address-detector
 ```
 
 Yarn:
 ```
-yarn add crypto_address_detector
+yarn add @yieldapp/crypto-address-detector
 ```
 
 ## Usage
