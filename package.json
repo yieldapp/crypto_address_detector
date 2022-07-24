@@ -1,8 +1,8 @@
 {
   "name": "@yieldapp/crypto-address-detector",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "type": "module",
-  "description": "Detect and determine cryptocurrency by address.",
+  "description": "Detect and determine cryptocurrency by address (React native compatible).",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
