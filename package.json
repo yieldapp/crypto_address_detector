@@ -1,6 +1,6 @@
 {
   "name": "@yieldapp/crypto-address-detector",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "type": "module",
   "description": "Detect and determine cryptocurrency by address.",
   "main": "index.js",
