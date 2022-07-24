@@ -1,6 +1,6 @@
-const detector = require('../index.js')
-const addrs = require('./fixtures')
+import detector from '../index.js'
+import addrs from './fixtures.json' assert {type: 'json'}
 
 addrs.forEach(addr => {
-  console.log(addr, 'result = ', detector.detect(addr))
+  console.log(addr, 'result = ', detector(addr))
 })
