@@ -46,7 +46,7 @@ res = CryptoDetector.detect(addr)
 console.log(addr, 'result = ',  res)
 // 3PHictxPg9gCLbSuwnvDhPtm9xkAM32Xs4 result =  [ 'btc' ]
 
-// an invalid etherum like address
+// an invalid ethereum like address
 addr = '0x3PHictxPg9gCLbSuwnvDhPtm9xkAM32Xs4'
 res = CryptoDetector.detect(addr)
 console.log(addr, 'result = ',  res)
