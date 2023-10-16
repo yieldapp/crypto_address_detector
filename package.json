@@ -1,6 +1,6 @@
 {
   "name": "@yieldapp/crypto-address-detector",
-  "version": "1.0.9",
+  "version": "1.0.10",
   "type": "module",
   "description": "Detect and determine cryptocurrency by address (React native compatible).",
   "main": "index.js",
@@ -23,6 +23,8 @@
   },
   "homepage": "https://github.com/yieldapp/crypto_address_detector#readme",
   "dependencies": {
+    "@polkadot/keyring": "^12.5.1",
+    "@polkadot/util": "^12.5.1",
     "@solana/web3.js": "^1.87.1",
     "js-sha3": "^0.8.0"
   }

@@ -4,6 +4,10 @@ const {keccak256} = jssha3
 // for solana ss58
 import {PublicKey} from '@solana/web3.js'
 
+// for polkador
+import {decodeAddress, encodeAddress} from '@polkadot/keyring'
+import {hexToU8a, isHex} from '@polkadot/util'
+
 
 function eipVerify(address) {
   const addr = address.substr(2)
@@ -27,8 +31,17 @@ async function VerifySolana(address) {
   }
 }
 
+function VerifyPolkadot(address) {
+  try {
+    encodeAddress(isHex(address) ? hexToU8a(address) : decodeAddress(address))
+    return true
+  } catch (e) {
+    return false
+  }
+}
+
 const CryptoDetect = {
-  detect: async (address) => {
+  detect: async address => {
     const btc_re = /^(bc1|[13])[a-zA-HJ-NP-Z0-9]{25,39}$/
     let res = address.match(btc_re)
     if (res !== null) {
@@ -49,14 +62,19 @@ const CryptoDetect = {
 
     const xrp_re = /^(r)[a-km-zA-HJ-NP-Z1-9]{24,34}$/
     res = address.match(xrp_re)
-    if (res !== null) {
+    if (res !== null && res === true) {
       return ['xrp']
     }
 
-        res = await VerifySolana(address)
-        if (res === true) {
-          return ['sol']
-        }
+    res = await VerifySolana(address)
+    if (res === true) {
+      return ['sol']
+    }
+
+    res = await VerifyPolkadot(address)
+    if (res !== null && res === true) {
+      return ['dot']
+    }
 
     return null
   }
