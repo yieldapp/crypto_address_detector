@@ -1,6 +1,9 @@
 import jssha3 from 'js-sha3'
 const {keccak256} = jssha3
 
+// for solana ss58
+import {PublicKey} from '@solana/web3.js'
+
 
 function eipVerify(address) {
   const addr = address.substr(2)
@@ -15,8 +18,17 @@ function eipVerify(address) {
   return true
 }
 
+async function VerifySolana(address) {
+  try {
+  const publicKey = new PublicKey(address)
+  return await PublicKey.isOnCurve(publicKey)
+  } catch (e) {
+    return false
+  }
+}
+
 const CryptoDetect = {
-  detect: (address) => {
+  detect: async (address) => {
     const btc_re = /^(bc1|[13])[a-zA-HJ-NP-Z0-9]{25,39}$/
     let res = address.match(btc_re)
     if (res !== null) {
@@ -27,11 +39,11 @@ const CryptoDetect = {
     res = address.match(eth_re)
     if (res !== null) {
       if (/^0x[0-9a-f]{40}$/.test(address) || /^0x?[0-9A-F]{40}$/.test(address)) {
-        return ['eth', 'bsc/bnb', 'polygon', 'avalanche/c']
+        return ['eth', 'bsc/bnb', 'polygon', 'avalanche/c', 'link', 'cosmos']
       }
       const valid = eipVerify(address, true)
       if (valid) {
-        return ['eth', 'bsc/bnb', 'polygon', 'avalanche/c']
+        return ['eth', 'bsc/bnb', 'polygon', 'avalanche/c', 'link', 'cosmos']
       }
     }
 
@@ -40,6 +52,11 @@ const CryptoDetect = {
     if (res !== null) {
       return ['xrp']
     }
+
+        res = await VerifySolana(address)
+        if (res === true) {
+          return ['sol']
+        }
 
     return null
   }
