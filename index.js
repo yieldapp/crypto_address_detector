@@ -60,14 +60,15 @@ const CryptoDetect = {
       }
     }
 
-    const xrp_re = /^(r)[a-km-zA-HJ-NP-Z1-9]{24,34}$/
+    const xrp_re = /^(r)[1-9A-HJ-NP-Za-km-z]{24,34}$/
+    // const xrp_re = /^(r)[a-km-zA-HJ-NP-Z1-9]{24,34}$/
     res = address.match(xrp_re)
-    if (res !== null && res === true) {
+    if (res !== null) {
       return ['xrp']
     }
 
     res = await VerifySolana(address)
-    if (res === true) {
+    if (res !== null && res === true) {
       return ['sol']
     }
 
