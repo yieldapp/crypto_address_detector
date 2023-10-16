@@ -37,7 +37,7 @@ const CryptoDetect = {
 
     const xrp_re = /^(r)[a-km-zA-HJ-NP-Z1-9]{24,34}$/
     res = address.match(xrp_re)
-    if (res !== 'null) {
+    if (res !== null) {
       return ['xrp']
     }
 
