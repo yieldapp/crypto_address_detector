@@ -52,11 +52,11 @@ const CryptoDetect = {
     res = address.match(eth_re)
     if (res !== null) {
       if (/^0x[0-9a-f]{40}$/.test(address) || /^0x?[0-9A-F]{40}$/.test(address)) {
-        return ['eth', 'bsc/bnb', 'polygon', 'avalanche/c', 'link', 'cosmos']
+        return ['eth', 'bsc/bnb', 'polygon', 'avalanche/c', 'chainlink', 'cosmos']
       }
       const valid = eipVerify(address, true)
       if (valid) {
-        return ['eth', 'bsc/bnb', 'polygon', 'avalanche/c', 'link', 'cosmos']
+        return ['eth', 'bsc/bnb', 'polygon', 'avalanche/c', 'chainlink', 'cosmos']
       }
     }
 
@@ -64,17 +64,17 @@ const CryptoDetect = {
     // const xrp_re = /^(r)[a-km-zA-HJ-NP-Z1-9]{24,34}$/
     res = address.match(xrp_re)
     if (res !== null) {
-      return ['xrp']
+      return ['ripple']
     }
 
     res = await VerifySolana(address)
     if (res !== null && res === true) {
-      return ['sol']
+      return ['solana']
     }
 
     res = await VerifyPolkadot(address)
     if (res !== null && res === true) {
-      return ['dot']
+      return ['polkadot']
     }
 
     return null
