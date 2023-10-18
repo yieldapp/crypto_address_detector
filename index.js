@@ -48,15 +48,21 @@ const CryptoDetect = {
       return ['btc']
     }
 
+    const cosmos_re = /^(cosmos1)[a-zA-HJ-NP-Z0-9]{25,39}$/
+    res = address.match(cosmos_re)
+    if (res !== null) {
+      return ['cosmos']
+    }
+
     const eth_re = /^0x[a-fA-F0-9]{40}$/
     res = address.match(eth_re)
     if (res !== null) {
       if (/^0x[0-9a-f]{40}$/.test(address) || /^0x?[0-9A-F]{40}$/.test(address)) {
-        return ['eth', 'bsc/bnb', 'polygon', 'avalanche/c', 'chainlink', 'cosmos']
+        return ['eth', 'bsc/bnb', 'polygon', 'avalanche/c', 'chainlink']
       }
       const valid = eipVerify(address, true)
       if (valid) {
-        return ['eth', 'bsc/bnb', 'polygon', 'avalanche/c', 'chainlink', 'cosmos']
+        return ['eth', 'bsc/bnb', 'polygon', 'avalanche/c', 'chainlink']
       }
     }
 
